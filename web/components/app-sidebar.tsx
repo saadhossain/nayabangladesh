@@ -1,5 +1,5 @@
 'use client'
-import { Calendar, ChartPie, NotebookPen, Power, Search, Settings } from "lucide-react"
+import { Calendar, ChartPie, NotebookPen, Power, Settings, User } from "lucide-react"
 import { usePathname } from "next/navigation"
 
 import {
@@ -14,32 +14,33 @@ import {
     SidebarTrigger,
 } from "@/components/ui/sidebar"
 import { signOut } from 'next-auth/react'
+import Link from 'next/link'
 
 // Menu items.
 const items = [
     {
-        title: "Statistics",
+        title: "পরিসংখ্যান",
         url: "stats",
         icon: ChartPie,
     },
     {
-        title: "Add News",
+        title: "খবর অ্যাড করুন",
         url: "addNews",
         icon: NotebookPen,
     },
     {
-        title: "Calendar",
-        url: "#",
+        title: "সব খবর",
+        url: "allNews",
         icon: Calendar,
     },
     {
-        title: "Search",
-        url: "#",
-        icon: Search,
+        title: "ব্যবহারকারী",
+        url: "users",
+        icon: User,
     },
     {
-        title: "Settings",
-        url: "#",
+        title: "সেটিংস",
+        url: "settings",
         icon: Settings,
     },
 ]
@@ -61,10 +62,10 @@ export function AppSidebar() {
                             {items.map((item) => (
                                 <SidebarMenuItem key={item.title}>
                                     <SidebarMenuButton asChild>
-                                        <a href={`/${basePath}/${item.url}`}>
+                                        <Link href={`/${basePath}/${item.url}`}>
                                             <item.icon />
                                             <span>{item.title}</span>
-                                        </a>
+                                        </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                             ))}

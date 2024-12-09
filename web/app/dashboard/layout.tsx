@@ -21,7 +21,7 @@ const DashboardLayout = async ({ children }: { children: ReactNode }) => {
         <div className='container mx-auto'>
             <SidebarProvider>
                 <AppSidebar />
-                <main>
+                <main className='my-3'>
                     {children}
                 </main>
             </SidebarProvider>

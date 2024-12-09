@@ -24,7 +24,7 @@ const AddNews = () => {
     // console.log(selectedCat)
 
     return (
-        <div className='my-3'>
+        <div>
             <div className='w-full flex gap-5 justify-between'>
                 <NewsEditor
                     title={title}
