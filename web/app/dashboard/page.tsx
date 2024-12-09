@@ -1,7 +1,10 @@
+import Heading from '@/components/headings/Heading'
 
 const Dashboard = () => {
     return (
-        <div>Dashboard</div>
+        <div>
+            <Heading title='পরিসংখ্যান' />
+        </div>
     )
 }
 

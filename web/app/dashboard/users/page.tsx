@@ -1,7 +1,10 @@
+import Heading from '@/components/headings/Heading'
 
 const Users = () => {
     return (
-        <div>Users</div>
+        <div>
+            <Heading title='ব্যবহারকারী' />
+        </div>
     )
 }
 

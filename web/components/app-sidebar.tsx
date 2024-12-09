@@ -20,7 +20,7 @@ import Link from 'next/link'
 const items = [
     {
         title: "পরিসংখ্যান",
-        url: "stats",
+        url: "/",
         icon: ChartPie,
     },
     {

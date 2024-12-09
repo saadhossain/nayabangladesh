@@ -1,6 +1,7 @@
 'use client'
 import NewsEditor from '@/components/admin/write/NewsEditor';
 import NewsMetadata from '@/components/admin/write/NewsMetadata';
+import Heading from '@/components/headings/Heading';
 import { useState } from 'react';
 
 
@@ -25,6 +26,7 @@ const AddNews = () => {
 
     return (
         <div>
+            <Heading title='নতুন খবর' />
             <div className='w-full flex gap-5 justify-between'>
                 <NewsEditor
                     title={title}

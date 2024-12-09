@@ -1,7 +1,10 @@
+import Heading from '@/components/headings/Heading'
 
 const AllNews = () => {
     return (
-        <div>AllNews</div>
+        <div>
+            <Heading title='সব খবর' />
+        </div>
     )
 }
 
