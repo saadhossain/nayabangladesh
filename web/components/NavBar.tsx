@@ -1,5 +1,4 @@
 "use client"
-import { buttonVariants } from "@/components/ui/button"
 import {
     Sheet,
     SheetContent,
@@ -15,6 +14,7 @@ import LoadingBar from 'react-top-loading-bar'
 import logo from '../public/images/nayabangladesh logo.png'
 import MobileNav from './mobile-nav'
 import { ModeToggle } from './theme-toggle'
+import { buttonVariants } from './ui/button'
 
 
 
@@ -69,9 +69,17 @@ const NavBar = () => {
                 <li><Link href={"/entertainment"}>বিনোদন</Link></li>
                 <li><Link href={"/jobs"}>চাকরি</Link></li>
                 <li><Link href={"/lifestyle"}>জীবনযাপন</Link></li>
-                <li className={`buttons px-4 space-x-2 ${session?.user && 'hidden'}`}>
-                    <Link href={"/login"} className={buttonVariants({ variant: "outline" })}>লগিন</Link>
-                </li>
+                <div>
+                    {
+                        session ? <Link href={"/dashboard"}>
+                            <Image src={session?.user?.image} alt='Dashboard' width={32} height={32} className='h-8 w-8 rounded-full' />
+                        </Link>
+                            :
+                            <li className='buttons px-4 space-x-2'>
+                                <Link href={"/login"} className={buttonVariants({ variant: "outline" })}>লগিন</Link>
+                            </li>
+                    }
+                </div>
             </ul>
             <ModeToggle />
             {/* Mobile Navigation */}

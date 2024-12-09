@@ -11,9 +11,14 @@ export interface NewsType {
 export interface CategoryType {
     _id: string,
     name: string,
-    slug: string
+    slug: string,
+    createdAt: string,
+    updatedAt: string
 }
 export interface TagType {
     _id: string,
     name: string,
+    slug?: string,
+    createdAt: string,
+    updatedAt: string
 }

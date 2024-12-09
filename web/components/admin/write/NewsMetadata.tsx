@@ -1,4 +1,5 @@
 import { getCategory, getTag } from '@/app/utils/apis';
+import { Button } from '@/components/ui/button';
 import { useQuery } from '@tanstack/react-query';
 import { Dispatch, SetStateAction } from 'react';
 import AddCategoryForm from './AddCategoryForm';
@@ -9,10 +10,11 @@ import UploadImg from './UploadImg';
 type Props = {
     setSelectedCat: Dispatch<SetStateAction<string[]>>,
     setSelectedTag: Dispatch<SetStateAction<string[]>>,
-    setFeaturedImg: Dispatch<SetStateAction<string>>
+    setFeaturedImg: Dispatch<SetStateAction<string>>,
+    handleSubmit: () => Promise<void>
 }
 
-const NewsMetadata = ({ setSelectedCat, setSelectedTag, setFeaturedImg }: Props) => {
+const NewsMetadata = ({ setSelectedCat, setSelectedTag, setFeaturedImg, handleSubmit }: Props) => {
     //Get categories from the Server
     const { data: categories } = useQuery({
         queryKey: ['getCategories'],
@@ -26,6 +28,11 @@ const NewsMetadata = ({ setSelectedCat, setSelectedTag, setFeaturedImg }: Props)
 
     return (
         <div className='w-1/4'>
+            {/* Submit button */}
+            <Button
+                onClick={handleSubmit}
+                className='block ml-auto mb-3'
+            >Publish</Button>
             {/* Featured Image */}
             <div className='border border-gray-300 rounded p-5'>
                 <h5 className='text-base font-semibold border-b border-gray-300 mb-5 pb-2'>Featured Image</h5>

@@ -1,4 +1,6 @@
+import { AppSidebar } from '@/components/app-sidebar';
 import LoadingSpinner from '@/components/spinner/LoadingSpinner';
+import { SidebarProvider } from '@/components/ui/sidebar';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { ReactNode } from 'react';
@@ -16,21 +18,14 @@ const DashboardLayout = async ({ children }: { children: ReactNode }) => {
         return <LoadingSpinner />
     }
     return (
-        <div className='w-11/12 md:w-10/12 mx-auto my-3 md:my-10'>
-            {
-                (session && session?.user?.role === 'admin') &&
-                <div className='flex gap-10'>
-                    <div className='w-1/5 hidden md:block'>
-                        {/* <Heading heading={'Dashboard'} /> */}
-                        <h3>Dashboard Menus</h3>
-                    </div>
-                    <main className='w-full md:w-9/12'>
-                        {children}
-                    </main>
-                </div>
-            }
+        <div className='container mx-auto'>
+            <SidebarProvider>
+                <AppSidebar />
+                <main>
+                    {children}
+                </main>
+            </SidebarProvider>
         </div>
-
     );
 };
 

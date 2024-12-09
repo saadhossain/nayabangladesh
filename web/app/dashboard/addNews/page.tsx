@@ -1,7 +1,6 @@
 'use client'
 import NewsEditor from '@/components/admin/write/NewsEditor';
 import NewsMetadata from '@/components/admin/write/NewsMetadata';
-import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 
 
@@ -25,13 +24,8 @@ const AddNews = () => {
     // console.log(selectedCat)
 
     return (
-        <div className='container mx-auto my-14 relative'>
-            {/* Submit button */}
-            <Button
-                onClick={handleSubmit}
-                className='absolute right-10 top-0  px-10'
-            >Publish</Button>
-            <div className='flex gap-5 justify-between'>
+        <div className='my-3'>
+            <div className='w-full flex gap-5 justify-between'>
                 <NewsEditor
                     title={title}
                     content={content}
@@ -42,6 +36,7 @@ const AddNews = () => {
                     setSelectedCat={setSelectedCat}
                     setSelectedTag={setSelectedTag}
                     setFeaturedImg={setFeaturedImg}
+                    handleSubmit={handleSubmit}
                 />
             </div>
         </div>

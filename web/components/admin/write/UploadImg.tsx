@@ -41,7 +41,7 @@ const UploadImg = ({ setFeaturedImg }: { setFeaturedImg: Dispatch<SetStateAction
                     <Image
                         src={preview}
                         alt="Upload"
-                        className="w-full h-[240px] rounded-lg"
+                        className="w-full max-h-[240px] rounded-lg"
                         width={100}
                         height={100}
                     />
