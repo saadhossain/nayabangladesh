@@ -1,16 +1,16 @@
 
 export const getNews = async () => {
-    const res = await fetch(`${process.env.API_URL}/news`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`);
     return res.json();
 }
 
 export const getCategory = async () => {
-    const res = await fetch(`${process.env.API_URL}/category`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/category`);
     return res.json();
 }
 
 export const addNewCategory = async (data: {}) => {
-    const res = await fetch(`${process.env.API_URL}/category`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/category`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -22,12 +22,12 @@ export const addNewCategory = async (data: {}) => {
 
 
 export const getTag = async () => {
-    const res = await fetch(`${process.env.API_URL}/tag`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/tag`);
     return res.json();
 }
 
 export const addNewTag = async (newTag: string) => {
-    const res = await fetch(`${process.env.API_URL}/tag`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/tag`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -38,13 +38,13 @@ export const addNewTag = async (newTag: string) => {
 }
 
 export const getUserByEmail = async (email: string) => {
-    const res = await fetch(`${process.env.API_URL}/user/single/${email}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/single/${email}`);
     const data = await res.json();
     return data;
 }
 
 export const getUserByID = async (id: string | any) => {
-    const res = await fetch(`${process.env.API_URL}/user/${id}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/${id}`);
     const data = await res.json();
     return data;
 }

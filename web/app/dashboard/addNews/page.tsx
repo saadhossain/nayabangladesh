@@ -8,7 +8,7 @@ import { useState } from 'react';
 const AddNews = () => {
     const [content, setContent] = useState('');
     const [title, setTitle] = useState('');
-    const [selectedCat, setSelectedCat] = useState<string[]>([]);
+    const [selectedCat, setSelectedCat] = useState<string>('');
     const [selectedTag, setSelectedTag] = useState<string[]>([]);
     const [featuredImg, setFeaturedImg] = useState('');
     //Save the News to Database
@@ -22,7 +22,6 @@ const AddNews = () => {
             alert('News saved!');
         }
     };
-    // console.log(selectedCat)
 
     return (
         <div>

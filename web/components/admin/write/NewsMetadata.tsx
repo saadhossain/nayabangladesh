@@ -5,10 +5,11 @@ import { Dispatch, SetStateAction } from 'react';
 import AddCategoryForm from './AddCategoryForm';
 import AddTagForm from './AddTagForm';
 import { MultiCheckbox } from './MultiCheckbox';
+import SelectCategory from './SelectCategory';
 import UploadImg from './UploadImg';
 
 type Props = {
-    setSelectedCat: Dispatch<SetStateAction<string[]>>,
+    setSelectedCat: Dispatch<SetStateAction<string>>,
     setSelectedTag: Dispatch<SetStateAction<string[]>>,
     setFeaturedImg: Dispatch<SetStateAction<string>>,
     handleSubmit: () => Promise<void>
@@ -25,7 +26,6 @@ const NewsMetadata = ({ setSelectedCat, setSelectedTag, setFeaturedImg, handleSu
         queryKey: ['getTags'],
         queryFn: getTag
     })
-
     return (
         <div className='w-1/4'>
             {/* Submit button */}
@@ -41,16 +41,16 @@ const NewsMetadata = ({ setSelectedCat, setSelectedTag, setFeaturedImg, handleSu
 
             {/* Post Category */}
             <div className='border border-gray-300 rounded p-5 mt-5'>
-                <h5 className='text-base font-semibold border-b border-gray-300 mb-5 pb-2'>Category</h5>
+                <h5 className='text-base font-semibold border-b border-gray-300 mb-2 pb-2'>Category</h5>
+                <SelectCategory data={categories} setSelectedCat={setSelectedCat} />
                 <AddCategoryForm />
-                <MultiCheckbox data={categories} stateToSaveData={setSelectedCat} />
             </div>
 
             {/* Post Tags */}
             <div className='border border-gray-300 rounded p-5 mt-5'>
-                <h5 className='text-base font-semibold border-b border-gray-300 mb-5 pb-2'>Tags</h5>
-                <AddTagForm />
+                <h5 className='text-base font-semibold border-b border-gray-300 mb-2 pb-2'>Tags</h5>
                 <MultiCheckbox data={tags} stateToSaveData={setSelectedTag} />
+                <AddTagForm />
             </div>
         </div>
     )

@@ -32,10 +32,14 @@ const AddTagForm = () => {
         <form
             onSubmit={handleAddTag}
             className='flex items-center w-full mb-2'>
-            <input type="text" name="tag" className='w-3/4 px-2 h-8 rounded-r-none rounded-l focus:outline-none border border-gray-300' />
+            <input
+                type="text"
+                name="tag"
+                placeholder='ট্যাগ নাম'
+                className='w-3/4 px-2 h-8 rounded-r-none rounded-l focus:outline-none border border-gray-300' />
             <button
                 type='submit'
-                className='w-1/4 bg-black text-white px-1 py-1 rounded-r flex items-center font-semibold'
+                className='w-20 bg-black text-white px-1 py-1 rounded-r flex items-center font-semibold'
                 disabled={isPending}
             ><Plus size={16} /> New</button>
         </form>

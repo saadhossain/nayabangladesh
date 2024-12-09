@@ -31,13 +31,23 @@ const AddCategoryForm = () => {
     return (
         <form
             onSubmit={handleAddCategory}
-            className='flex items-center w-full mb-2'>
-            <input type="text" name="newCat" className='w-3/4 px-2 h-8 rounded-r-none rounded-l focus:outline-none border border-gray-300' />
+            className='w-full mb-2 flex flex-col gap-2'>
+            <input
+                type="text"
+                name="name"
+                placeholder='ক্যাটেগরি নাম'
+                className='w-full px-2 h-8 rounded focus:outline-none border border-gray-300'
+            />
+            <input
+                type="text"
+                name="slug"
+                placeholder='category-slug'
+                className='w-full px-2 h-8 rounded focus:outline-none border border-gray-300' />
             <button
                 type='submit'
-                className='w-1/4 bg-black text-white px-1 py-1 rounded-r flex items-center font-semibold'
+                className='w-full bg-black text-white px-1 py-1 rounded flex items-center justify-center font-semibold'
                 disabled={isPending}
-            ><Plus size={16} /> New</button>
+            ><Plus size={16} /> Add Category</button>
         </form>
     )
 }
