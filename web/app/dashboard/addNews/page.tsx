@@ -1,28 +1,43 @@
 'use client'
+import { addNews } from '@/app/utils/apis';
 import NewsEditor from '@/components/admin/write/NewsEditor';
 import NewsMetadata from '@/components/admin/write/NewsMetadata';
 import Heading from '@/components/headings/Heading';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 
 const AddNews = () => {
     const [content, setContent] = useState('');
     const [title, setTitle] = useState('');
-    const [selectedCat, setSelectedCat] = useState<string>('');
+    const [selectedCat, setSelectedCat] = useState<{}>({});
+    const [selectedUser, setSelectedUser] = useState<{}>({});
     const [selectedTag, setSelectedTag] = useState<string[]>([]);
     const [featuredImg, setFeaturedImg] = useState('');
-    //Save the News to Database
-    const handleSubmit = async () => {
-        const res = await fetch('http://localhost:5000/post', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title, story: content, selectedCat, selectedTag, featuredImg }),
-        });
-        if (res.ok) {
-            alert('News saved!');
-        }
-    };
 
+    const queryClient = useQueryClient();
+    //Save the News to Database
+    const { mutate: useAddNewsMutation, isPending: newsAddingPending } = useMutation({
+        mutationFn: addNews,
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['news'] })
+        }
+    })
+    const handleSubmit = async () => {
+        const newsData = { title, story: content, category: selectedCat, tags: selectedTag, reporter: selectedUser, featuredImg };
+        //Save News to the Server
+        useAddNewsMutation(newsData, {
+            onSuccess: (data) => {
+                if (data._id) {
+                    toast.success('নতুন খবর যুক্ত হয়েছে.')
+                }
+            },
+            onError: (error) => {
+                console.error("Error adding category:", error);
+            },
+        })
+    };
     return (
         <div>
             <Heading title='নতুন খবর' />
@@ -35,9 +50,11 @@ const AddNews = () => {
                 />
                 <NewsMetadata
                     setSelectedCat={setSelectedCat}
+                    setSelectedUser={setSelectedUser}
                     setSelectedTag={setSelectedTag}
                     setFeaturedImg={setFeaturedImg}
                     handleSubmit={handleSubmit}
+                    newsAddingPending={newsAddingPending}
                 />
             </div>
         </div>

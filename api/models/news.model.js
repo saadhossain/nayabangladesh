@@ -9,8 +9,9 @@ const NewsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    selectedCat: [],
-    selectedTag: [],
+    category: {},
+    reporter: {},
+    tags: [],
     featuredImg: String
 }, { timestamps: true });
 

@@ -4,12 +4,12 @@ import { Plus } from 'lucide-react';
 import { FormEvent } from 'react';
 import toast from 'react-hot-toast';
 
-const AddCategoryForm = () => {
+const AddReporterForm = () => {
     const queryClient = useQueryClient();
     const { mutate: useAddCategoryMutation, isPending } = useMutation({
         mutationFn: addNewCategory,
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['categories'] })
+            queryClient.invalidateQueries({ queryKey: ['users'] })
         }
     })
     const handleAddCategory = (e: FormEvent<HTMLFormElement>) => {
@@ -35,13 +35,13 @@ const AddCategoryForm = () => {
             <input
                 type="text"
                 name="name"
-                placeholder='ক্যাটেগরি নাম'
+                placeholder='রিপোর্টারের নাম'
                 className='w-full px-2 h-8 rounded focus:outline-none border border-gray-300'
             />
             <input
                 type="text"
                 name="slug"
-                placeholder='category-slug'
+                placeholder='জেলা'
                 className='w-full px-2 h-8 rounded focus:outline-none border border-gray-300' />
             <button
                 type='submit'
@@ -52,4 +52,4 @@ const AddCategoryForm = () => {
     )
 }
 
-export default AddCategoryForm
+export default AddReporterForm

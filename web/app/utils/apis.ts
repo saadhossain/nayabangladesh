@@ -4,6 +4,16 @@ export const getNews = async () => {
     return res.json();
 }
 
+//Add/Publish New News
+export const addNews = async (data: {}) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
+    return res.json();
+}
+
 export const getCategory = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/category`);
     return res.json();
@@ -34,6 +44,13 @@ export const addNewTag = async (newTag: string) => {
         },
         body: JSON.stringify({ name: newTag })
     })
+    return res.json();
+}
+
+
+//Get Users
+export const getUsers = async () => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user`);
     return res.json();
 }
 

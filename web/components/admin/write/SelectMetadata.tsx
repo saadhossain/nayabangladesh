@@ -6,30 +6,28 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select";
-import { CategoryType } from '@/types/newsTypes';
+import { CategoryType, UserType } from '@/types/newsTypes';
 import { Dispatch, SetStateAction } from 'react';
 
-const SelectCategory = ({
-    data,
-    setSelectedCat
-}: {
-    data: CategoryType[],
-    setSelectedCat: Dispatch<SetStateAction<string>>
-}) => {
-    const handleSelectCategory = (value: string) => {
-        setSelectedCat(value);
-    };
+type Props = {
+    data: CategoryType[] | UserType[],
+    stateToSaveData: Dispatch<SetStateAction<{}>>
+}
 
+const SelectMetadata = ({ data, stateToSaveData }: Props) => {
+    const handleSelectCategory = (value: string) => {
+        stateToSaveData(JSON.parse(value));
+    };
     return (
         <Select onValueChange={handleSelectCategory}>
             <SelectTrigger className="w-full mb-2">
-                <SelectValue placeholder="Select a category" />
+                <SelectValue placeholder="নির্বাচন করুন" />
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>
-                    {data?.map((cat: CategoryType) => (
-                        <SelectItem key={cat._id} value={cat.slug}>
-                            {cat.name}
+                    {data?.map((item: CategoryType | UserType) => (
+                        <SelectItem key={item._id} value={JSON.stringify(item)}>
+                            {item.name}
                         </SelectItem>
                     ))}
                 </SelectGroup>
@@ -38,4 +36,4 @@ const SelectCategory = ({
     );
 };
 
-export default SelectCategory;
+export default SelectMetadata;

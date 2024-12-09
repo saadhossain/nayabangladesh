@@ -1,14 +1,15 @@
+import SiteConfig from '@/config/site';
 import parse from 'html-react-parser';
 import Head from 'next/head';
 import Image from 'next/image';
 
 const getSingleNews = async (id: string) => {
-    const res = await fetch(`http://localhost:5000/post/${id}`);
+    const res = await fetch(`http://localhost:4000/news/${id}`);
     const data = await res.json();
     return data;
 }
 
-const page = async ({ params }: { params: any }) => {
+const NewsDetails = async ({ params }: { params: { _id: string } }) => {
     const news = await getSingleNews(params._id);
     return (
         <div className='container mx-auto p-4'>
@@ -29,4 +30,13 @@ const page = async ({ params }: { params: any }) => {
     )
 }
 
-export default page
+export default NewsDetails
+
+
+export const generateMetadata = async ({ params }: { params: { _id: string } }) => {
+    const news = await getSingleNews(params._id);
+    return {
+        title: `${news.title} - নয়া বাংলাদেশ`,
+        description: SiteConfig.description
+    }
+}

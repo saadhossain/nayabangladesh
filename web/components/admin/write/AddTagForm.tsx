@@ -9,7 +9,7 @@ const AddTagForm = () => {
     const { mutate: useAddTagMutation, isPending } = useMutation({
         mutationFn: addNewTag,
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['getTags'] })
+            queryClient.invalidateQueries({ queryKey: ['tags'] })
         }
     })
     const handleAddTag = (e: FormEvent<HTMLFormElement>) => {
@@ -41,7 +41,7 @@ const AddTagForm = () => {
                 type='submit'
                 className='w-20 bg-black text-white px-1 py-1 rounded-r flex items-center font-semibold'
                 disabled={isPending}
-            ><Plus size={16} /> New</button>
+            ><Plus size={16} /> নতুন</button>
         </form>
     )
 }
