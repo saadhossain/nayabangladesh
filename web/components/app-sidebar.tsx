@@ -24,7 +24,7 @@ const items = [
         icon: ChartPie,
     },
     {
-        title: "খবর অ্যাড করুন",
+        title: "নতুন খবর",
         url: "addNews",
         icon: NotebookPen,
     },
@@ -56,7 +56,7 @@ export function AppSidebar() {
             <SidebarTrigger className='absolute top-0 -right-6 z-50' />
             <SidebarContent>
                 <SidebarGroup>
-                    <SidebarGroupLabel>ড্যাশবোর্ড</SidebarGroupLabel>
+                    <SidebarGroupLabel className='text-xl font-semibold text-gray-900 border-b-2 border-gray-300 rounded-none pb-2 mb-2'>ড্যাশবোর্ড</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
                             {items.map((item) => (
@@ -74,7 +74,7 @@ export function AppSidebar() {
                                     <p
                                         onClick={() => signOut()}
                                         className='flex items-center cursor-pointer'
-                                    ><Power />Logout</p>
+                                    ><Power />লগআউট</p>
                                 </SidebarMenuButton>
                             </SidebarMenuItem>
                         </SidebarMenu>
