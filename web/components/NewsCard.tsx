@@ -1,7 +1,6 @@
 import { NewsType } from '@/types/newsTypes';
 import parse from 'html-react-parser';
 import Image from 'next/image';
-import { Button } from './ui/button';
 import NewsDetailsLink from './ui/NewsDetailsBtn';
 const NewsCard = ({ news }: { news: NewsType }) => {
 
@@ -16,7 +15,7 @@ const NewsCard = ({ news }: { news: NewsType }) => {
                     parse(news.story.slice(0, 350))
                 }
             </div>
-            <NewsDetailsLink news={news}><Button>বিস্তারিত</Button></NewsDetailsLink>
+            {/* <NewsDetailsLink news={news}><Button>বিস্তারিত</Button></NewsDetailsLink> */}
         </div>
     )
 }
