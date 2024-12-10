@@ -27,15 +27,17 @@ const LoginForm = () => {
         const form = e.target as HTMLFormElement;
         const email: string = form.email.value;
         const password: string = form.password.value;
-
         try {
-            await signIn('credentials', {
+            const res = await signIn('credentials', {
                 email,
                 password,
                 redirect: false,
             });
-            toast.success('Login Successful.')
-            setLoading(false);
+            if (res?.ok) {
+                toast.success('Login Successful.')
+                setLoading(false);
+            }
+
         } catch (error: any) {
             setLoading(false);
             throw new Error(error.message);
@@ -77,7 +79,7 @@ const LoginForm = () => {
             <div className="space-y-2">
                 <div>
                     <button type="submit" className="w-full flex items-center justify-center px-8 py-3 font-semibold rounded-md bg-primary text-white">
-                        {loading ? <Processing title={'Processing'} /> : 'লগিন করুন'}
+                        {loading ? <Processing title={'লগিন হচ্ছে'} /> : 'লগিন করুন'}
                     </button>
                 </div>
             </div>

@@ -1,12 +1,12 @@
 import { getUserByEmail, getUserByID } from '@/app/utils/apis';
 import { compare } from 'bcrypt';
-import NextAuth, { NextAuthOptions } from "next-auth";
+import NextAuth, { Session, TokenSet, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 
 
 //Initiate the authOptions
-export const authOptions: NextAuthOptions = {
+const handler = NextAuth({
     session: {
         strategy: 'jwt'
     },
@@ -31,7 +31,7 @@ export const authOptions: NextAuthOptions = {
                         throw new Error('Credentials not found');
                     }
                     // Find the user from the Database
-                    const user = await getUserByEmail(credentials?.email)
+                    const user = await getUserByEmail(credentials?.email);
                     if (!user) {
                         throw new Error('You are not registered. Please Signup')
                     }
@@ -55,7 +55,7 @@ export const authOptions: NextAuthOptions = {
         })
     ],
     callbacks: {
-        async jwt({ token, user }) {
+        async jwt({ token, user }: { token: TokenSet, user: User }) {
             if (user) {
                 token._id = user._id?.toString();
                 token.email = user.email;
@@ -67,7 +67,7 @@ export const authOptions: NextAuthOptions = {
             }
             return token;
         },
-        async session({ session, token }) {
+        async session({ session, token }: { session: Session, token: TokenSet }) {
             //Get user from server by ID
             const user = await getUserByID(token?._id);
             if (user) {
@@ -85,10 +85,7 @@ export const authOptions: NextAuthOptions = {
         }
     },
     secret: process.env.NEXTAUTH_SECRET
-};
-
-//Auth handler
-const handler = NextAuth(authOptions);
+});
 
 export { handler as GET, handler as POST };
 

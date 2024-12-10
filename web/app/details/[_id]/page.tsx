@@ -1,10 +1,10 @@
-import SiteConfig from '@/config/site';
+import { BASE_URL, SiteConfig } from '@/config/site';
 import parse from 'html-react-parser';
 import Head from 'next/head';
 import Image from 'next/image';
 
 const getSingleNews = async (id: string) => {
-    const res = await fetch(`http://localhost:4000/news/${id}`);
+    const res = await fetch(`${BASE_URL}/news/${id}`);
     const data = await res.json();
     return data;
 }

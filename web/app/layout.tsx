@@ -1,6 +1,6 @@
 import NavBar from "@/components/NavBar";
 import { ThemeProvider } from "@/components/theme-provider";
-import SiteConfig from "@/config/site";
+import { SiteConfig } from '@/config/site';
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";

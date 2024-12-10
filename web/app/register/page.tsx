@@ -1,5 +1,5 @@
 import RegisterForm from '@/components/RegisterForm';
-import SiteConfig from '@/config/site';
+import { SiteConfig } from '@/config/site';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

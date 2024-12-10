@@ -57,7 +57,7 @@ const NavBar = () => {
                 </Link>
             </div>
             <ul className='hidden md:flex w-full justify-end items-center space-x-4 '>
-                <li><Link href={"/news"}>সর্বশেষ</Link></li>
+                <li><Link href={"/latest"}>সর্বশেষ</Link></li>
                 <li><Link href={"/politics"}>রাজনীতি</Link></li>
                 <li><Link href={"/bangladesh"}>বাংলাদেশ</Link></li>
                 <li><Link href={"/crime"}>অপরাধ</Link></li>

@@ -50,6 +50,7 @@
     "remark-parse": "^11.0.0",
     "remark-parse-frontmatter": "^1.0.3",
     "remark-rehype": "^11.1.0",
+    "sharp": "^0.33.5",
     "shiki": "^1.14.1",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",

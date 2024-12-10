@@ -146,7 +146,7 @@ const RegisterForm = () => {
             }
             <div className="space-y-2">
                 <div>
-                    <button type="submit" className="w-full flex items-center justify-center px-8 py-3 font-semibold rounded-md bg-primary text-white">{loading ? <Processing title={'Processing'} /> : 'Register'}</button>
+                    <button type="submit" className="w-full flex items-center justify-center px-8 py-3 font-semibold rounded-md bg-primary text-white">{loading ? <Processing title={'রেজিস্টার হচ্ছে'} /> : 'Register'}</button>
                 </div>
                 <p className="px-6 text-sm text-center text-gray-400">আগে রেজিস্টার করেছেন?
                     <Link href="/login" className="text-primary hover:text-secondary ml-2 text-lg font-semibold">লগিন করুন</Link>.

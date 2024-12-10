@@ -7,7 +7,7 @@ const NewsCard = ({ news }: { news: NewsType }) => {
     return (
         <div>
             <Link href={`details/${news._id}`}>
-                <Image src={news.featuredImg} alt={news.title} width={700} height={467} className='rounded-md mb-3' />
+                <Image src={news.featuredImg} alt={news.title} width={700} height={400} className='rounded-md mb-3 max-h-[400px]' />
                 <h2 className='text-base md:text-lg font-semibold'>{news.title}</h2>
             </Link>
             <div className='my-5'>
