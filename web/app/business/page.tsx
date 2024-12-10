@@ -2,17 +2,17 @@ import PageContent from '@/components/content/PageContent';
 import { SiteConfig } from '@/config/site';
 import { Metadata } from 'next';
 
-const Latest = () => {
+const Business = () => {
     return (
         <div className='container mx-auto p-4'>
-            <PageContent category='latest' />
+            <PageContent category='business' />
         </div>
     )
 }
 
-export default Latest
+export default Business
 
 export const metadata: Metadata = {
-    title: 'সর্বশেষ খবর - আজকের খবর - ব্রেকিং নিউজ | Latest News - Breaking News - Todays News | নয়া বাংলাদেশ',
+    title: 'ব্যবসা-বানিজ্যের খবর - অর্থনীতির খবর | Business and Economy News | নয়া বাংলাদেশ',
     description: SiteConfig.description,
 };

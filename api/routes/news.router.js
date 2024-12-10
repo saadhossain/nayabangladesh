@@ -5,9 +5,38 @@ const router = express.Router();
 
 //Get all the news
 router.get('/', async (req, res) => {
-    const result = await News.find({}).sort({ createdAt: -1 });
-    res.status(200).send(result);
+    const query = {};
+    try {
+        const result = await News.find(query).sort({ createdAt: -1 });
+        res.status(200).send(result);
+    } catch (error) {
+        console.error('Error inserting category:', error);
+        res.status(500).send(error);
+    }
 });
+
+//Get news by category
+router.get('/', async (req, res) => {
+    const { category, page = 1, limit = 24 } = req.query;
+
+    try {
+        const news = await News.find({ 'category.slug': category })
+            .sort({ createdAt: -1 })
+            .skip((page - 1) * limit)
+            .limit(Number(limit));
+
+        const total = await News.countDocuments({ 'category.slug': category });
+
+        res.status(200).send({
+            news,
+            total,
+        });
+    } catch (error) {
+        console.error('Error fetching news by category:', error);
+        res.status(500).send(error);
+    }
+});
+
 
 //Save new News to the Database
 router.post('/', async (req, res) => {

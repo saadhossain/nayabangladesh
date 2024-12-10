@@ -1,16 +1,18 @@
-import NewsCard from '@/components/NewsCard';
-import { NewsType } from '@/types/newsTypes';
-import { getNews } from '../utils/apis';
+import PageContent from '@/components/content/PageContent';
+import { SiteConfig } from '@/config/site';
+import { Metadata } from 'next';
 
-const CatBangladesh = async () => {
-    const allNews = await getNews();
+const Bangladesh = () => {
     return (
-        <div className='container mx-auto p-4 grid grid-cols-2 md:grid-cols-4 gap-5'>
-            {
-                allNews?.map((news: NewsType) => <NewsCard key={news._id} news={news} />)
-            }
+        <div className='container mx-auto p-4'>
+            <PageContent category='bangladesh' />
         </div>
     )
 }
 
-export default CatBangladesh
+export default Bangladesh
+
+export const metadata: Metadata = {
+    title: 'বাংলাদেশের সকল খবর - দেশের খবর | Bangladesh News | নয়া বাংলাদেশ',
+    description: SiteConfig.description,
+};

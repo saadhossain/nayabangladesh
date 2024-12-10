@@ -5,6 +5,12 @@ export const getNews = async () => {
     return res.json();
 }
 
+//Get News by Category
+export const getNewsByCategory = async (category: string) => {
+    const res = await fetch(`${BASE_URL}/news?category=${category}`);
+    return res.json();
+}
+
 //Add/Publish New News
 export const addNews = async (data: {}) => {
     const res = await fetch(`${BASE_URL}/news`, {

@@ -2,17 +2,17 @@ import PageContent from '@/components/content/PageContent';
 import { SiteConfig } from '@/config/site';
 import { Metadata } from 'next';
 
-const Latest = () => {
+const Crime = () => {
     return (
         <div className='container mx-auto p-4'>
-            <PageContent category='latest' />
+            <PageContent category='crime' />
         </div>
     )
 }
 
-export default Latest
+export default Crime
 
 export const metadata: Metadata = {
-    title: 'সর্বশেষ খবর - আজকের খবর - ব্রেকিং নিউজ | Latest News - Breaking News - Todays News | নয়া বাংলাদেশ',
+    title: 'অপরাধ জগতের সকল খবর | Crime News | নয়া বাংলাদেশ',
     description: SiteConfig.description,
 };
