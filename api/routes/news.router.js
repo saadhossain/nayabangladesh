@@ -16,16 +16,16 @@ router.get('/', async (req, res) => {
 });
 
 //Get news by category
-router.get('/', async (req, res) => {
-    const { category, page = 1, limit = 24 } = req.query;
+router.get('/category', async (req, res) => {
+    const { cat, page, limit } = req.query;
 
     try {
-        const news = await News.find({ 'category.slug': category })
+        const news = await News.find({ 'category.slug': cat })
             .sort({ createdAt: -1 })
             .skip((page - 1) * limit)
             .limit(Number(limit));
 
-        const total = await News.countDocuments({ 'category.slug': category });
+        const total = await News.countDocuments({ 'category.slug': cat });
 
         res.status(200).send({
             news,
