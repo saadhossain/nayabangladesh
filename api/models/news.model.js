@@ -5,6 +5,10 @@ const NewsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    excerpt: {
+        type: String,
+        required: true
+    },
     story: {
         type: String,
         required: true
@@ -12,6 +16,7 @@ const NewsSchema = new mongoose.Schema({
     category: {},
     reporter: {},
     tags: [],
+    readingCount: Number,
     featuredImg: String
 }, { timestamps: true });
 

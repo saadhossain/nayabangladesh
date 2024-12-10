@@ -7,12 +7,14 @@ const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 type editorProps = {
     title: string,
+    excerpt: string,
     content: string,
     setTitle: Dispatch<SetStateAction<string>>,
+    setExcerpt: Dispatch<SetStateAction<string>>,
     setContent: Dispatch<SetStateAction<string>>
 }
 
-const NewsEditor = ({ title, content, setTitle, setContent }: editorProps) => {
+const NewsEditor = ({ title, excerpt, setExcerpt, content, setTitle, setContent }: editorProps) => {
 
     const modules = {
         toolbar: [
@@ -41,6 +43,16 @@ const NewsEditor = ({ title, content, setTitle, setContent }: editorProps) => {
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
+            </div>
+            <div className='my-3'>
+                <label htmlFor="excerpt" className='font-semibold'>খবরের সারাংশ</label>
+                <textarea
+                    id="excerpt"
+                    placeholder='খবরের সারাংশ লিখুন'
+                    className='w-full border border-gray-300 rounded p-3 mt-2'
+                    value={excerpt}
+                    onChange={(e) => setExcerpt(e.target.value)}
+                ></textarea>
             </div>
             <label htmlFor="heading" className='font-semibold'>বিস্তারিত খবর</label>
             <ReactQuill

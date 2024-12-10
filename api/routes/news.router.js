@@ -44,6 +44,22 @@ router.put('/:id', async (req, res) => {
         return res.status(200).send({ message: "Updated successfully" });
     }
 });
+// Update a single news item partially
+router.patch('/:id', async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const result = await News.findByIdAndUpdate(
+            id,
+            { $inc: { readingCount: 1 } },
+            { new: true }
+        );
+        res.status(200).send({ message: 'Updated successfully', data: result });
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+
 
 //Delete the Single News
 router.delete('/:id', async (req, res) => {

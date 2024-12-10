@@ -15,6 +15,16 @@ export const addNews = async (data: {}) => {
     return res.json();
 }
 
+//Partially update news by id
+export const updateNewsPartially = async (id: string | undefined) => {
+    const res = await fetch(`${BASE_URL}/news/${id}`, {
+        method: 'PATCH',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({})
+    })
+    return res.json();
+}
+
 export const getCategory = async () => {
     const res = await fetch(`${BASE_URL}/category`);
     return res.json();

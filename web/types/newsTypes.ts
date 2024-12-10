@@ -1,11 +1,13 @@
 export interface NewsType {
     _id?: string,
     title: string,
+    excerpt?: string,
     story: string,
     category: CategoryType,
     tags: TagType,
     reporter: UserType,
     featuredImg: string,
+    readingCount: number,
     createdAt?: string,
     updatedAt?: string
 }

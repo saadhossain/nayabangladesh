@@ -4,4 +4,5 @@ export const SiteConfig = {
 
 }
 
-export const BASE_URL = 'https://nb-gules.vercel.app';
+// export const BASE_URL = 'https://nb-gules.vercel.app';
+export const BASE_URL = 'http://localhost:4000';

@@ -11,6 +11,7 @@ import toast from 'react-hot-toast';
 const AddNews = () => {
     const [content, setContent] = useState('');
     const [title, setTitle] = useState('');
+    const [excerpt, setExcerpt] = useState('');
     const [selectedCat, setSelectedCat] = useState<{}>({});
     const [selectedUser, setSelectedUser] = useState<{}>({});
     const [selectedTag, setSelectedTag] = useState<string[]>([]);
@@ -25,12 +26,18 @@ const AddNews = () => {
         }
     })
     const handleSubmit = async () => {
-        const newsData = { title, story: content, category: selectedCat, tags: selectedTag, reporter: selectedUser, featuredImg };
+        const newsData = { title, excerpt, story: content, category: selectedCat, tags: selectedTag, reporter: selectedUser, readingCount: 0, featuredImg };
         //Save News to the Server
         useAddNewsMutation(newsData, {
             onSuccess: (data) => {
                 if (data._id) {
-                    toast.success('নতুন খবর যুক্ত হয়েছে.')
+                    toast.success('নতুন খবর যুক্ত হয়েছে.');
+                    setContent('');
+                    setTitle('')
+                    setExcerpt('')
+                    setSelectedCat({})
+                    setSelectedUser({})
+                    setFeaturedImg('')
                 }
             },
             onError: (error) => {
@@ -44,6 +51,8 @@ const AddNews = () => {
             <div className='w-full flex gap-5 justify-between'>
                 <NewsEditor
                     title={title}
+                    excerpt={excerpt}
+                    setExcerpt={setExcerpt}
                     content={content}
                     setTitle={setTitle}
                     setContent={setContent}
