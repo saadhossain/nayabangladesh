@@ -3,16 +3,15 @@ import parse from 'html-react-parser';
 import Image from 'next/image';
 import NewsDetailsLink from './ui/NewsDetailsBtn';
 const NewsCard = ({ news }: { news: NewsType }) => {
-
     return (
-        <div>
+        <div className='max-h-[420px] overflow-hidden bg-gray-50 pb-2'>
             <NewsDetailsLink news={news}>
-                <Image src={news.featuredImg} alt={news.title} width={700} height={400} className='rounded-md mb-3 max-h-[400px]' />
-                <h2 className='text-base md:text-lg font-semibold'>{news.title}</h2>
+                <Image src={news.featuredImg} alt={news.title} width={700} height={200} className='rounded-t-md mb-3 h-[180px]' />
+                <h2 className='text-base md:text-lg font-semibold px-4 mb-2'>{news.title}</h2>
             </NewsDetailsLink>
-            <div className='my-5'>
+            <div className='px-4'>
                 {
-                    parse(news.story.slice(0, 350))
+                    parse(news.story.slice(0, 250))
                 }
             </div>
             {/* <NewsDetailsLink news={news}><Button>বিস্তারিত</Button></NewsDetailsLink> */}
