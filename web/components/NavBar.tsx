@@ -22,9 +22,9 @@ import { buttonVariants } from './ui/button'
 
 
 const NavBar = () => {
+    const { data: session } = useSession();
     const [progress, setProgress] = useState(0)
     const pathname = usePathname();
-    const { data: session } = useSession();
 
     // This runs whenever page changes to some other page
     useEffect(() => {
@@ -71,7 +71,7 @@ const NavBar = () => {
                         key={category._id}
                         className={`${pathname === `/${category.slug}` ? 'text-secondary' : 'text-primary'}`}
                     >
-                        <Link href={category.slug}>{category.name}</Link>
+                        <Link href={`/${category.slug}`}>{category.name}</Link>
                     </li>
                     )
                 }

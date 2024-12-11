@@ -11,7 +11,7 @@ const NewsDetailsLink = ({ news, children }: { news: NewsType, children: ReactNo
     return (
         <Link
             onClick={() => handleReadingCount(news._id)}
-            href={`details/${news._id}`}
+            href={`/details/${news._id}`}
         >
             {children}
         </Link>

@@ -16,7 +16,7 @@ const MobileNav = ({ categories }: { categories: CategoryType[] }) => {
             key={category._id}
             className={`${pathname === `/${category.slug}` ? 'text-secondary' : 'text-primary'}`}
           >
-            <Link href={category.slug}>{category.name}</Link>
+            <Link href={`/${category.slug}`}>{category.name}</Link>
           </li>
           )
         }

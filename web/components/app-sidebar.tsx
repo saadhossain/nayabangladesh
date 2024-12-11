@@ -1,6 +1,4 @@
-'use client'
 import { Calendar, ChartPie, NotebookPen, Power, Settings, User } from "lucide-react"
-import { usePathname } from "next/navigation"
 
 import {
     Sidebar,
@@ -46,10 +44,6 @@ const items = [
 ]
 
 export function AppSidebar() {
-    const pathname = usePathname()
-
-    // Get the base path (e.g., /dashboard)
-    const basePath = pathname.split("/")[1]
 
     return (
         <Sidebar className='mt-16'>
@@ -62,7 +56,7 @@ export function AppSidebar() {
                             {items.map((item) => (
                                 <SidebarMenuItem key={item.title}>
                                     <SidebarMenuButton asChild>
-                                        <Link href={`/${basePath}/${item.url}`}>
+                                        <Link href={`/dashboard/${item.url}`}>
                                             <item.icon />
                                             <span>{item.title}</span>
                                         </Link>
