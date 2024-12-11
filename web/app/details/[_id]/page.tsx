@@ -1,4 +1,5 @@
 import { BASE_URL, SiteConfig } from '@/config/site';
+import fallbackImage from '@/public/images/fallbackImage.webp';
 import parse from 'html-react-parser';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -21,7 +22,11 @@ const NewsDetails = async ({ params }: { params: { _id: string } }) => {
             </Head>
             <article>
                 <h2 className='text-lg md:text-3xl font-semibold'>{news.title}</h2>
-                <Image src={news.featuredImg} alt={news.title} width={700} height={467} className='rounded-md my-4' />
+                <Image
+                    src={news.featuredImg ? news.featuredImg : fallbackImage}
+                    alt={news.title} width={700} height={467}
+                    className='rounded-md my-4'
+                />
                 <div className='my-5'>
                     {parse(news.story)}
                 </div>
