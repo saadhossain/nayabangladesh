@@ -5,7 +5,7 @@ import { getNewsByCategory } from '../utils/apis';
 
 export const useCategoryNews = (category: string) => {
     return useQuery({
-        queryKey: ['categoryNews', category],
+        queryKey: ['categoryNews'],
         queryFn: () => getNewsByCategory(category),
         enabled: !!category
     });

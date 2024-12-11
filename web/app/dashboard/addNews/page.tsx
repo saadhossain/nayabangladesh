@@ -22,7 +22,7 @@ const AddNews = () => {
     const { mutate: useAddNewsMutation, isPending: newsAddingPending } = useMutation({
         mutationFn: addNews,
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['news'] })
+            queryClient.invalidateQueries({ queryKey: ['categoryNews'] })
         }
     })
     const handleSubmit = async () => {
