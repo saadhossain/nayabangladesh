@@ -1,25 +1,25 @@
 'use client'
+import { CategoryType } from '@/types/newsTypes'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { buttonVariants } from './ui/button'
 
-const MobileNav = () => {
+const MobileNav = ({ categories }: { categories: CategoryType[] }) => {
   const { data: session } = useSession();
+  const pathname = usePathname();
   return (
     <div>
-      <ul className="flex flex-col gap-4">
-        <li><Link href={"/latest"}>সর্বশেষ</Link></li>
-        <li><Link href={"/politics"}>রাজনীতি</Link></li>
-        <li><Link href={"/bangladesh"}>বাংলাদেশ</Link></li>
-        <li><Link href={"/crime"}>অপরাধ</Link></li>
-        <li><Link href={"/world"}>বিশ্ব</Link></li>
-        <li><Link href={"/business"}>বানিজ্য</Link></li>
-        <li><Link href={"/july-revolution"}>জুলাই বিপ্লব</Link></li>
-        <li><Link href={"/opinion"}>মতামত</Link></li>
-        <li><Link href={"/sports"}>খেলা</Link></li>
-        <li><Link href={"/entertainment"}>বিনোদন</Link></li>
-        <li><Link href={"/jobs"}>চাকরি</Link></li>
-        <li><Link href={"/lifestyle"}>জীবনযাপন</Link></li>
+      <ul className="flex flex-col gap-4 text-base font-semibold">
+        {
+          categories?.map((category: CategoryType) => <li
+            key={category._id}
+            className={`${pathname === `/${category.slug}` ? 'text-secondary' : 'text-primary'}`}
+          >
+            <Link href={category.slug}>{category.name}</Link>
+          </li>
+          )
+        }
         <li className={`buttons space-x-2 ${session?.user && 'hidden'}`}>
           <Link href={"/login"} className={buttonVariants({ variant: "outline" })}>লগিন</Link>
         </li>

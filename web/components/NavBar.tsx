@@ -1,9 +1,12 @@
 "use client"
+import { getCategory } from '@/app/utils/apis'
 import {
     Sheet,
     SheetContent,
     SheetTrigger
 } from "@/components/ui/sheet"
+import { CategoryType } from '@/types/newsTypes'
+import { useQuery } from '@tanstack/react-query'
 import { Menu } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
@@ -43,6 +46,11 @@ const NavBar = () => {
             setProgress(0)
         }, 900);
     }, [])
+    //Get categories from the Server
+    const { data: categories } = useQuery({
+        queryKey: ['categories'],
+        queryFn: getCategory
+    })
 
     return (
         <nav className='container mx-auto h-16 bg-background/50 sticky top-0 border-b px-8 backdrop-blur flex items-center justify-between z-10'>
@@ -56,20 +64,18 @@ const NavBar = () => {
                     <Image src={logo} alt='Naya Bangladesh' />
                 </Link>
             </div>
-            <ul className='hidden md:flex w-full justify-end items-center space-x-4 '>
-                <li><Link href={"/latest"}>সর্বশেষ</Link></li>
-                <li><Link href={"/politics"}>রাজনীতি</Link></li>
-                <li><Link href={"/bangladesh"}>বাংলাদেশ</Link></li>
-                <li><Link href={"/crime"}>অপরাধ</Link></li>
-                <li><Link href={"/world"}>বিশ্ব</Link></li>
-                <li><Link href={"/business"}>বানিজ্য</Link></li>
-                <li><Link href={"/july-revolution"}>জুলাই বিপ্লব</Link></li>
-                <li><Link href={"/opinion"}>মতামত</Link></li>
-                <li><Link href={"/sports"}>খেলা</Link></li>
-                <li><Link href={"/entertainment"}>বিনোদন</Link></li>
-                <li><Link href={"/jobs"}>চাকরি</Link></li>
-                <li><Link href={"/lifestyle"}>জীবনযাপন</Link></li>
-                <div>
+            <ul className='hidden md:flex gap-2 w-full justify-end items-center text-sm font-semibold'>
+
+                {
+                    categories?.map((category: CategoryType) => <li
+                        key={category._id}
+                        className={`${pathname === `/${category.slug}` ? 'text-secondary' : 'text-primary'}`}
+                    >
+                        <Link href={category.slug}>{category.name}</Link>
+                    </li>
+                    )
+                }
+                <div className='ml-2'>
                     {
                         session ? <Link href={"/dashboard"}>
                             <Image src={session?.user?.image} alt='Dashboard' width={32} height={32} className='h-8 w-8 rounded-full' />
@@ -89,7 +95,7 @@ const NavBar = () => {
                         <Menu />
                     </SheetTrigger>
                     <SheetContent className='overflow-x-auto'>
-                        <MobileNav />
+                        <MobileNav categories={categories} />
                     </SheetContent>
                 </Sheet>
             </div>
