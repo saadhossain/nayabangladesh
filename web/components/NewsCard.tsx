@@ -11,17 +11,16 @@ const NewsCard = ({ news }: { news: NewsType }) => {
                 <Image
                     src={news.featuredImg ? news.featuredImg : fallbackImage}
                     alt={news.title} width={700} height={200}
-                    className='rounded-t-md mb-3 h-[180px]'
+                    className='rounded-t-md mb-3 h-[100px] md:h-[180px]'
                     loading='lazy'
                 />
-                <h2 className='text-base md:text-lg font-semibold px-4 mb-2'>{news.title}</h2>
+                <h2 className='text-sm md:text-lg font-semibold px-4 mb-2'>{news.title}</h2>
             </NewsDetailsLink>
             <div className='px-4'>
                 {
-                    parse(news.story.slice(0, 250))
+                    news.excerpt ? news.excerpt : parse(news.story.slice(0, 160))
                 }
             </div>
-            {/* <NewsDetailsLink news={news}><Button>বিস্তারিত</Button></NewsDetailsLink> */}
         </div>
     )
 }
