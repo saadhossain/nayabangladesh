@@ -1,3 +1,5 @@
+import NewsInfo from '@/components/ui/NewsInfo';
+import SocialShareBtns from '@/components/ui/SocialShareBtns';
 import { BASE_URL, SiteConfig } from '@/config/site';
 import fallbackImage from '@/public/images/fallbackImage.webp';
 import parse from 'html-react-parser';
@@ -22,11 +24,14 @@ const NewsDetails = async ({ params }: { params: { _id: string } }) => {
             </Head>
             <article>
                 <h2 className='text-lg md:text-3xl font-semibold'>{news.title}</h2>
+                <NewsInfo news={news} />
                 <Image
                     src={news.featuredImg ? news.featuredImg : fallbackImage}
                     alt={news.title} width={700} height={467}
                     className='rounded-md my-4'
                 />
+                {/* Social Share Btns */}
+                <SocialShareBtns />
                 <div className='my-5'>
                     {parse(news.story)}
                 </div>
