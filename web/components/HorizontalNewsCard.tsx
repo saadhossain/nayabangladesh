@@ -6,14 +6,14 @@ import NewsDetailsLink from './ui/NewsDetailsBtn';
 const HorizontalNewsCard = ({ news }: { news: NewsType }) => {
     return (
         <NewsDetailsLink news={news}>
-            <div className='flex items-center justify-center gap-2 bg-gray-300 dark:bg-gray-900 py-2 pl-2 rounded mb-2'>
+            <div className='flex items-center justify-center gap-2 bg-gray-300 dark:bg-gray-900 py-2 pl-3 rounded mb-4'>
                 <Image
                     src={news.featuredImg ? news.featuredImg : fallbackImage}
-                    alt={news.title} width={300} height={100}
-                    className='rounded-md mb-3 h-[100px]'
+                    alt={news.title} width={192} height={100}
+                    className='rounded-md md:max-w-48 w-full h-[100px]'
                     loading='lazy'
                 />
-                <h2 className='text-sm md:text-base font-semibold px-4 mb-2'>{news.title}</h2>
+                <h2 className='text-sm md:text-base font-semibold px-4 hover:text-primary duration-300 ease-in-out'>{news.title}</h2>
             </div>
         </NewsDetailsLink>
     )

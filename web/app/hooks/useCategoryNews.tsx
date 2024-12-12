@@ -3,7 +3,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { getNewsByCategory } from '../utils/apis';
 
-export const useCategoryNews = (category: string) => {
+export const useGetNewsByCategory = (category: string) => {
     return useQuery({
         queryKey: ['categoryNews'],
         queryFn: () => getNewsByCategory(category),

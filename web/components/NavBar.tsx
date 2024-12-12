@@ -15,7 +15,7 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import LoadingBar from 'react-top-loading-bar'
 import logo from '../public/images/nayabangladesh logo.png'
-import MobileNav from './mobile-nav'
+import MobileNav from './MobileNav'
 import { ModeToggle } from './theme-toggle'
 import { buttonVariants } from './ui/button'
 
@@ -69,7 +69,7 @@ const NavBar = () => {
                 {
                     categories?.map((category: CategoryType) => <li
                         key={category._id}
-                        className={`${pathname === `/${category.slug}` ? 'text-secondary' : 'text-primary'}`}
+                        className={`${pathname === `/${category.slug}` ? 'text-secondary' : 'text-primary'} hover:text-secondary duration-300 ease-in-out`}
                     >
                         <Link href={`/${category.slug}`}>{category.name}</Link>
                     </li>
@@ -82,7 +82,7 @@ const NavBar = () => {
                         </Link>
                             :
                             <li className='buttons px-4 space-x-2'>
-                                <Link href={"/login"} className={buttonVariants({ variant: "outline" })}>লগিন</Link>
+                                <Link href={"/login"} className={`font-semibold ${buttonVariants({ variant: "outline" })}`}>লগিন</Link>
                             </li>
                     }
                 </div>

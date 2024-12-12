@@ -1,5 +1,5 @@
 'use client'
-import { AppSidebar } from '@/components/app-sidebar';
+import { DashboardSidebar } from '@/components/DashboardSidebar';
 import LoadingSpinner from '@/components/spinner/LoadingSpinner';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { useSession } from 'next-auth/react';
@@ -20,7 +20,7 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
     return (
         <div className='container mx-auto'>
             <SidebarProvider>
-                <AppSidebar />
+                <DashboardSidebar />
                 <main className='my-3'>
                     {children}
                 </main>

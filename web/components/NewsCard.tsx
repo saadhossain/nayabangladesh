@@ -21,7 +21,7 @@ const NewsCard = ({ news }: { news: NewsType }) => {
                     <span className='block md:hidden'>{dateAndDay}</span>
                     <span className='hidden md:block'>{`${dateOnly}, (${timeAgo})`}</span>
                 </p>
-                <h2 className='text-sm md:text-lg font-semibold mb-2 p-4 md:py-0'>{news.title}</h2>
+                <h2 className='text-sm md:text-lg font-semibold mb-2 p-4 md:py-0 hover:text-primary duration-300 ease-in-out'>{news.title}</h2>
             </NewsDetailsLink>
             <div className='px-4 hidden md:block'>
                 {
