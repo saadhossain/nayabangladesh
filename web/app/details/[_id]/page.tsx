@@ -1,5 +1,6 @@
 import { getNewsById } from '@/app/utils/apis';
 import NewsDetailsContent from '@/components/content/NewsDetailsContent';
+import NewsComment from '@/components/news/NewsComment';
 import NewsSidebar from '@/components/news/NewsSidebar';
 import { SiteConfig } from '@/config/site';
 import { ReactNode } from 'react';
@@ -8,8 +9,9 @@ const NewsDetails = async ({ params }: { children: ReactNode, params: { _id: str
     const news = await getNewsById(params._id);
     return (
         <div className='w-full md:container mx-auto my-3 md:flex gap-5'>
-            <main className='w-full md:w-4/6'>
+            <main className='w-full md:w-4/6 mb-5'>
                 <NewsDetailsContent news={news} />
+                <NewsComment />
             </main>
             <aside className='w-full md:w-2/6 mt-10'>
                 <NewsSidebar
