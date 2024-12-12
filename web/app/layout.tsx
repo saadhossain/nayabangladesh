@@ -1,4 +1,4 @@
-import NavBar from "@/components/NavBar";
+import NavBar from "@/components/header-footer/NavBar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteConfig } from '@/config/site';
 import { cn } from "@/lib/utils";

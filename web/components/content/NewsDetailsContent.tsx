@@ -3,8 +3,8 @@ import { NewsType } from '@/types/newsTypes'
 import parse from 'html-react-parser'
 import Head from 'next/head'
 import Image from 'next/image'
-import NewsInfo from '../ui/NewsInfo'
-import SocialShareBtns from '../ui/SocialShareBtns'
+import NewsInfo from '../news/NewsInfo'
+import SocialShareBtns from '../news/SocialShareBtns'
 
 const NewsDetailsContent = ({ news }: { news: NewsType }) => {
     return (

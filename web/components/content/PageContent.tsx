@@ -1,8 +1,8 @@
 'use client'
 import { useGetNewsByCategory } from '@/app/hooks/useCategoryNews';
 import { NewsType } from '@/types/newsTypes';
-import NewsCard from '../NewsCard';
-import NoNewsFound from '../NoNewsFound';
+import NewsCard from '../news/NewsCard';
+import NoNewsFound from '../news/NoNewsFound';
 import LoadingSpinner from '../spinner/LoadingSpinner';
 
 const PageContent = ({ category }: { category: string }) => {

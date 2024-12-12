@@ -2,8 +2,8 @@
 import { useGetNewsByCategory } from '@/app/hooks/useCategoryNews'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CategoryType, NewsType } from '@/types/newsTypes'
+import Loading from '../spinner/Loading'
 import HorizontalNewsCard from './HorizontalNewsCard'
-import Loading from './spinner/Loading'
 
 const NewsSidebar = ({ newsId, newsCategory }: { newsId: string, newsCategory: CategoryType }) => {
 

@@ -1,7 +1,7 @@
 import fallbackImage from '@/public/images/fallbackImage.webp';
 import { NewsType } from '@/types/newsTypes';
 import Image from 'next/image';
-import NewsDetailsLink from './ui/NewsDetailsBtn';
+import NewsDetailsLink from './NewsDetailsBtn';
 
 const HorizontalNewsCard = ({ news }: { news: NewsType }) => {
     return (

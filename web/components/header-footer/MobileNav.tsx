@@ -3,7 +3,7 @@ import { CategoryType } from '@/types/newsTypes'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { buttonVariants } from './ui/button'
+import { buttonVariants } from '../ui/button'
 
 const MobileNav = ({ categories }: { categories: CategoryType[] }) => {
   const { data: session } = useSession();

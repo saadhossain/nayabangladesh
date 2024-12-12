@@ -1,4 +1,4 @@
-import RegisterForm from '@/components/RegisterForm';
+import RegisterForm from '@/components/forms/RegisterForm';
 import { SiteConfig } from '@/config/site';
 import { Metadata } from 'next';
 

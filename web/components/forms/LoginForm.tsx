@@ -5,8 +5,8 @@ import { redirect, useSearchParams } from 'next/navigation';
 import { FormEvent, Suspense, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import LoadingSpinner from './spinner/LoadingSpinner';
-import Processing from './spinner/Processing';
+import LoadingSpinner from '../spinner/LoadingSpinner';
+import Processing from '../spinner/Processing';
 
 
 const LoginForm = () => {

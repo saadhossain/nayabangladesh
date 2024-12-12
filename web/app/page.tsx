@@ -1,5 +1,5 @@
-import NewsCard from '@/components/NewsCard';
-import NoNewsFound from '@/components/NoNewsFound';
+import NewsCard from '@/components/news/NewsCard';
+import NoNewsFound from '@/components/news/NoNewsFound';
 import { NewsType } from '@/types/newsTypes';
 import { getNews } from './utils/apis';
 

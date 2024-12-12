@@ -3,7 +3,7 @@ import fallbackImage from '@/public/images/fallbackImage.webp';
 import { NewsType } from '@/types/newsTypes';
 import parse from 'html-react-parser';
 import Image from 'next/image';
-import NewsDetailsLink from './ui/NewsDetailsBtn';
+import NewsDetailsLink from './NewsDetailsBtn';
 
 const NewsCard = ({ news }: { news: NewsType }) => {
     const { dateAndDay, timeAgo, dateOnly } = convertTimeToBengali(news.createdAt);

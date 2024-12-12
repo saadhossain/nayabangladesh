@@ -1,5 +1,5 @@
 'use client'
-import { DashboardSidebar } from '@/components/DashboardSidebar';
+import { DashboardSidebar } from '@/components/admin/write/DashboardSidebar';
 import LoadingSpinner from '@/components/spinner/LoadingSpinner';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { useSession } from 'next-auth/react';

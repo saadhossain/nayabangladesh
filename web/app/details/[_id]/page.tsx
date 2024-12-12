@@ -1,6 +1,6 @@
 import { getNewsById } from '@/app/utils/apis';
 import NewsDetailsContent from '@/components/content/NewsDetailsContent';
-import NewsSidebar from '@/components/NewsSidebar';
+import NewsSidebar from '@/components/news/NewsSidebar';
 import { SiteConfig } from '@/config/site';
 import { ReactNode } from 'react';
 

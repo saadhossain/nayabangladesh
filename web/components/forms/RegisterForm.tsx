@@ -7,7 +7,7 @@ import { redirect } from 'next/navigation';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import Processing from './spinner/Processing';
+import Processing from '../spinner/Processing';
 
 const RegisterForm = () => {
     // State for processing status

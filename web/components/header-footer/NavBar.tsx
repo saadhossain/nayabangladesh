@@ -14,10 +14,10 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import LoadingBar from 'react-top-loading-bar'
-import logo from '../public/images/nayabangladesh logo.png'
+import logo from '../../public/images/nayabangladesh logo.png'
+import { ModeToggle } from '../theme-toggle'
+import { buttonVariants } from '../ui/button'
 import MobileNav from './MobileNav'
-import { ModeToggle } from './theme-toggle'
-import { buttonVariants } from './ui/button'
 
 
 
