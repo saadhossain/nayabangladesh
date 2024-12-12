@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 const LoginPage = () => {
     return (
         <div className='w-11/12 md:w-10/12 mx-auto my-5 md:my-10 flex justify-center'>
-            <div className="w-full flex flex-col max-w-md p-4 md:p-6 rounded-r-md bg-gray-100 text-gray-900 shadow-2xl">
+            <div className="w-full flex flex-col max-w-md p-4 md:p-6 rounded-md bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white shadow-2xl">
                 <div className="mb-2 md:mb-8 text-center">
-                    <h1 className="my-2 md:my-3 text-2xl md:text-4xl font-bold text-primary">একাউন্ট লগিন</h1>
+                    <h1 className="my-2 md:my-3 text-2xl md:text-4xl font-bold text-primary dark:text-white border-b-2 border-primary dark:border-white pb-2">একাউন্ট লগিন</h1>
                 </div>
                 <LoginForm />
                 <div className='w-full my-3'>
