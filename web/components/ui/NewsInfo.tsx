@@ -11,12 +11,12 @@ const NewsInfo = ({ news }: { news: NewsType }) => {
     return (
         <div className='my-3 md:my-4'>
             <div className='flex items-center gap-2'>
-                <Image src={imageError ? logo : news.reporter.image} alt={news.reporter.name} width={48} height={48}
+                <Image src={imageError ? logo : news?.reporter?.image} alt={news?.reporter?.name} width={48} height={48}
                     onError={() => setImageError(true)}
                     className='h-12 rounded-lg' />
                 <div>
-                    <h5 className='text-base font-semibold'>{news.reporter.name}</h5>
-                    {/* <p>{newsPostedTime}</p> */}
+                    <h5 className='text-base font-semibold'>{news?.reporter?.name}</h5>
+                    <p>({timeAgo}) {formattedDate}</p>
                 </div>
             </div>
         </div>

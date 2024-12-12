@@ -6,7 +6,7 @@ import NewsDetailsLink from './ui/NewsDetailsBtn';
 const HorizontalNewsCard = ({ news }: { news: NewsType }) => {
     return (
         <NewsDetailsLink news={news}>
-            <div className='flex items-center justify-center gap-2 bg-gray-200 py-2 pl-2 rounded mb-2'>
+            <div className='flex items-center justify-center gap-2 bg-gray-300 dark:bg-gray-900 py-2 pl-2 rounded mb-2'>
                 <Image
                     src={news.featuredImg ? news.featuredImg : fallbackImage}
                     alt={news.title} width={300} height={100}

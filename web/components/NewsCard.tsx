@@ -8,7 +8,7 @@ import NewsDetailsLink from './ui/NewsDetailsBtn';
 const NewsCard = ({ news }: { news: NewsType }) => {
     const { dateAndDay, timeAgo, dateOnly } = convertTimeToBengali(news.createdAt);
     return (
-        <div className='max-h-[440px] overflow-hidden bg-gray-50 pb-2'>
+        <div className='max-h-[440px] overflow-hidden bg-gray-200 dark:bg-gray-800 pb-2 rounded-md'>
             <NewsDetailsLink news={news}>
                 <Image
                     src={news.featuredImg ? news.featuredImg : fallbackImage}
@@ -25,7 +25,7 @@ const NewsCard = ({ news }: { news: NewsType }) => {
             </NewsDetailsLink>
             <div className='px-4 hidden md:block'>
                 {
-                    news.excerpt ? news.excerpt : parse(news.story.slice(0, 160))
+                    news.excerpt ? news.excerpt.slice(0, 90) : parse(news.story.slice(0, 90))
                 }
             </div>
         </div>

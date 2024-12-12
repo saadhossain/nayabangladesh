@@ -1,11 +1,17 @@
 'use client'
 import { useCategoryNews } from '@/app/hooks/useCategoryNews';
+import { getNewsById } from '@/app/utils/apis';
 import { NewsType } from '@/types/newsTypes';
+import { useQuery } from '@tanstack/react-query';
 import HorizontalNewsCard from '../HorizontalNewsCard';
 import Loading from '../spinner/Loading';
 
-const NewsSidebarContent = () => {
-    const { data, isLoading, isError } = useCategoryNews('latest');
+const NewsSidebarContent = ({ newsId }: { newsId: string }) => {
+    const { data: openedNews } = useQuery({
+        queryKey: ['newsCategory'],
+        queryFn: () => getNewsById(newsId)
+    })
+    const { data, isLoading, isError } = useCategoryNews(openedNews?.category?.slug);
     return (
         <div>
             {

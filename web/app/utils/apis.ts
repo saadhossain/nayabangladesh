@@ -5,6 +5,11 @@ export const getNews = async () => {
     return res.json();
 }
 
+export const getNewsById = async (id: string) => {
+    const res = await fetch(`${BASE_URL}/news/${id}`);
+    return res.json();
+}
+
 //Get News by Category
 export const getNewsByCategory = async (category: string) => {
     const res = await fetch(`${BASE_URL}/news/category?cat=${category}`);
