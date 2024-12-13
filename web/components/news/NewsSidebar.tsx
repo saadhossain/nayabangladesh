@@ -2,7 +2,7 @@
 import { useGetNewsByCategory } from '@/app/hooks/useCategoryNews'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CategoryType, NewsType } from '@/types/newsTypes'
-import Loading from '../spinner/Loading'
+import HorizontalCardLoader from '../spinner/HorizontalCardLoader'
 import HorizontalNewsCard from './HorizontalNewsCard'
 
 const NewsSidebar = ({ newsId, newsCategory }: { newsId: string, newsCategory: CategoryType }) => {
@@ -27,7 +27,7 @@ const NewsSidebar = ({ newsId, newsCategory }: { newsId: string, newsCategory: C
                 {/* Related to Current News or More news from same category */}
                 <TabsContent value="related">
                     {
-                        isLoading ? <Loading />
+                        isLoading ? Array.from({ length: 4 }).map((_, index) => <HorizontalCardLoader key={index} />)
                             : <div>
                                 {newsExludingCurrent?.map((news: NewsType) => <HorizontalNewsCard key={news._id} news={news} />)}
                             </div>
@@ -37,7 +37,7 @@ const NewsSidebar = ({ newsId, newsCategory }: { newsId: string, newsCategory: C
                 {/* Most Readed News from the Current Category */}
                 <TabsContent value="mostReaded">
                     {
-                        isLoading ? <Loading />
+                        isLoading ? Array.from({ length: 4 }).map((_, index) => <HorizontalCardLoader key={index} />)
                             : <div>
                                 {mostReaded?.map((news: NewsType) => <HorizontalNewsCard key={news._id} news={news} />)}
                             </div>

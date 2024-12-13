@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { MessageSquareMore } from 'lucide-react';
 import { useRef, useState } from 'react';
 import NewsCommentForm from '../forms/NewsCommentForm';
-import Loading from '../spinner/Loading';
+import CommentCardLoader from '../spinner/CommentCardLoader';
 import CommentCard from './CommentCard';
 
 const NewsComment = ({ newsId }: { newsId: string }) => {
@@ -47,7 +47,7 @@ const NewsComment = ({ newsId }: { newsId: string }) => {
                 </button>
                 {/* Comment Cards */}
                 {
-                    isLoading ? <Loading />
+                    isLoading ? Array.from({ length: 2 }).map((_, index) => <CommentCardLoader key={index} />)
                         : <>
                             {comments?.map((comment: CommentType) => <CommentCard key={comment._id} comment={comment} />)}
                         </>
