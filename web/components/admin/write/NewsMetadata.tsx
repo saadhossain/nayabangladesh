@@ -40,7 +40,7 @@ const NewsMetadata = ({ setSelectedCat, setSelectedUser, setSelectedTag, setFeat
             {/* Submit button */}
             <Button
                 onClick={handleSubmit}
-                className='block ml-auto mb-3'
+                className='block ml-auto mb-3 text-white font-semibold'
                 disabled={newsAddingPending}
             >পাবলিশ করুন</Button>
             {/* Featured Image */}
@@ -77,7 +77,7 @@ const NewsMetadata = ({ setSelectedCat, setSelectedUser, setSelectedTag, setFeat
             {/* Submit button */}
             <Button
                 onClick={handleSubmit}
-                className='w-full block ml-auto mt-3'
+                className='w-full block ml-auto mt-3 text-white font-semibold'
                 disabled={newsAddingPending}
             >পাবলিশ করুন</Button>
         </div>

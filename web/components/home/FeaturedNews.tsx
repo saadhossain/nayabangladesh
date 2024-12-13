@@ -16,11 +16,29 @@ const FeaturedNews = ({ news }: { news: NewsType[] }) => {
                 !mostReadedThree.includes(n) && !topFiveHeadline.includes(n)
         );
     //Get News from Opinion and World Category
-    const opinionNews = news?.filter((n: NewsType) => (n?.category?.slug === 'opinion')).slice(0, 2);
+    const opinionNews = news?.filter((n: NewsType) => (n?.category?.slug === 'opinion')).filter(
+        (n: NewsType) =>
+            !mostReadedThree.includes(n) && !topFiveHeadline.includes(n)
+    ).slice(0, 2);
 
-    const worldNews = news?.filter((n: NewsType) => (n?.category?.slug === 'world')).slice(0, 2);
+    const worldNews = news?.filter((n: NewsType) => (n?.category?.slug === 'world')).filter(
+        (n: NewsType) =>
+            !mostReadedThree.includes(n) && !topFiveHeadline.includes(n)
+    ).slice(0, 2).slice(0, 2);
 
+    //Combined the opinonNews and WorldNews
     const opinionAndWorldNews = [...opinionNews, ...worldNews];
+
+    //Get the Entertainment News
+    const entertainmentNews = news?.filter((n: NewsType) => (n?.category?.slug === 'entertainment')).filter(
+        (n: NewsType) =>
+            !mostReadedThree.includes(n) && !topFiveHeadline.includes(n)
+    ).slice(0, 3);
+
+    const politicsNews = news?.filter((n: NewsType) => (n?.category?.slug === 'politics')).filter(
+        (n: NewsType) =>
+            !mostReadedThree.includes(n) && !topFiveHeadline.includes(n)
+    ).slice(0, 3);
     return (
         <div className='flex gap-3'>
             <div className='w-1/4'>
@@ -37,7 +55,11 @@ const FeaturedNews = ({ news }: { news: NewsType[] }) => {
                     isOnlyTitle={true}
                 />)}
             </div>
-            <FeatureNewsMiddle top3NewsFromBangladesh={top3NewsFromBangladesh} />
+            <FeatureNewsMiddle
+                top3NewsFromBangladesh={top3NewsFromBangladesh}
+                entertainmentNews={entertainmentNews}
+                politicsNews={politicsNews}
+            />
 
             {/* Featured News Right Sidebar -- Opinion and World News */}
             <div className='w-1/4'>
