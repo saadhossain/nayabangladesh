@@ -3,9 +3,8 @@ import NewsDetailsContent from '@/components/content/NewsDetailsContent';
 import NewsComment from '@/components/news/NewsComment';
 import NewsSidebar from '@/components/news/NewsSidebar';
 import { SiteConfig } from '@/config/site';
-import { ReactNode } from 'react';
 
-const NewsDetails = async ({ params }: { children: ReactNode, params: { _id: string } }) => {
+const NewsDetails = async ({ params }: { params: { _id: string } }) => {
     const news = await getNewsById(params._id);
     return (
         <div className='w-full md:container mx-auto my-3 md:flex gap-5'>

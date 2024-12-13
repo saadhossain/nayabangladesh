@@ -44,7 +44,7 @@ const NewsCommentForm = ({ newsId, formRef }: { newsId: string, formRef: RefObje
         <form
             ref={formRef} // Attach the ref to the form
             onSubmit={(e) => handleAddComment(e)}
-            className="w-10/12 mt-5"
+            className="w-11/12 mx-auto mt-5"
         >
             <div className='w-full flex gap-5'>
                 <div className='w-2/4'>

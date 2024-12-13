@@ -33,14 +33,14 @@ const NewsComment = ({ newsId }: { newsId: string }) => {
         <section className='mt-6 border-t border-gray-300'>
             {/* News Comment Section */}
             <>
-                <div className='w-full flex flex-col items-center justify-center py-6'>
+                <div className='w-11/12 flex flex-col items-center justify-center py-6'>
                     <h4 className='text-lg font-semibold'>পাঠকের মতামত</h4>
                     <p>-মন্তব্য সমূহ পাঠকের একান্ত ব্যক্তিগত। এর জন্য সম্পাদক দায়ী নন।</p>
                 </div>
                 {/* Comment Form Toggle Button */}
                 <button
                     onClick={toggleCommentBox}
-                    className='flex items-center gap-2 ml-auto'
+                    className='flex items-center gap-2 ml-auto mr-10'
                 >
                     <p className='text-lg font-semibold hover:text-primary duration-300 ease-in-out'>মন্তব্য করুন</p>
                     <MessageSquareMore size={24} className='text-primary' />

@@ -5,7 +5,7 @@ import Image from 'next/image';
 const CommentCard = ({ comment }: { comment: CommentType }) => {
     const { formattedDate } = convertTimeToBengali(comment?.createdAt);
     return (
-        <div className='border border-gray-300 rounded-md p-6 my-5'>
+        <div className='w-11/12 mx-auto border border-gray-300 rounded-md p-6 my-5'>
             <p>{comment.comment}</p>
             <div className='flex items-center gap-5 mt-5'>
                 <Image src={comment?.image} alt={comment.readerName} width={50} height={50} className='rounded-full border-2 border-gray-500' />
