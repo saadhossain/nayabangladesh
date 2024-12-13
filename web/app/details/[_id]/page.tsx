@@ -11,7 +11,7 @@ const NewsDetails = async ({ params }: { children: ReactNode, params: { _id: str
         <div className='w-full md:container mx-auto my-3 md:flex gap-5'>
             <main className='w-full md:w-4/6 mb-5'>
                 <NewsDetailsContent news={news} />
-                <NewsComment />
+                <NewsComment newsId={news?._id} />
             </main>
             <aside className='w-full md:w-2/6 mt-10'>
                 <NewsSidebar

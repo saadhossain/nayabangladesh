@@ -37,3 +37,14 @@ export interface UserType {
     createdAt: string,
     updatedAt: string,
 }
+
+export interface CommentType {
+    _id?: string,
+    newsId: string,
+    readerName: string,
+    email: string,
+    comment: string,
+    image: string,
+    createdAt: string,
+    updatedAt: string
+}

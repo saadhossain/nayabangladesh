@@ -1,13 +1,14 @@
 const express = require('express');
-const News = require('../models/news.model');
+const Comments = require('../models/comments.model');
+const crypto = require('crypto');
 
 const router = express.Router();
 
-//Get all the news
+//Get all the Comments
 router.get('/', async (req, res) => {
     const query = {};
     try {
-        const result = await News.find(query).sort({ createdAt: -1 });
+        const result = await Comments.find(query).sort({ createdAt: -1 });
         res.status(200).send(result);
     } catch (error) {
         console.error('Error inserting category:', error);
@@ -15,30 +16,20 @@ router.get('/', async (req, res) => {
     }
 });
 
-//Get news by category
-router.get('/category', async (req, res) => {
-    const { cat, page, limit } = req.query;
-
+//Get all comments for a specific news
+router.get('/news/:newsId', async (req, res) => {
+    const { newsId } = req.params;
+    const query = { newsId: newsId };
     try {
-        const news = await News.find({ 'category.slug': cat })
-            .sort({ createdAt: -1 })
-            .skip((page - 1) * limit)
-            .limit(Number(limit));
-
-        const total = await News.countDocuments({ 'category.slug': cat });
-
-        res.status(200).send({
-            news,
-            total,
-        });
+        const result = await Comments.find(query).sort({ createdAt: -1 });
+        res.status(200).send(result);
     } catch (error) {
-        console.error('Error fetching news by category:', error);
+        console.error('Error inserting category:', error);
         res.status(500).send(error);
     }
 });
 
-
-//Save new News to the Database
+//Save new Comment to the Database
 router.post('/', async (req, res) => {
     const payload = req.body;
     //Validation checks
@@ -46,24 +37,28 @@ router.post('/', async (req, res) => {
         res.status(400).send('Bad Request! Please provide a valid JSON input.');
         return;
     }
+    const generateImage = (name) => {
+        const hash = crypto.createHash('md5').update(name.toLowerCase()).digest('hex');
+        return `https://www.gravatar.com/avatar/${hash}?d=identicon`;
+    };
     //Save the new News to the Database
     try {
-        const newNews = new News(payload);
-        const result = await newNews.save();
+        const newComment = new Comments({ ...payload, image: generateImage(payload.readerName) });
+        const result = await newComment.save();
         res.status(200).send(result);
     } catch (error) {
-        console.error('Error inserting category:', error);
+        console.error('Error inserting Comment:', error);
         res.status(500).send(error);
     }
 });
-//Get the single news by id
+//Get the single comment by id
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
     const result = await News.findById(id);
     res.status(200).send(result);
 });
 
-//Update the Single news
+//Update the Single comment
 router.put('/:id', async (req, res) => {
     const { id } = req.params;
     const payload = req.body;
@@ -74,7 +69,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-// Update a single news item partially
+// Update a single comment item partially
 router.patch('/:id', async (req, res) => {
     const { id } = req.params;
     const updateData = req.body;
@@ -88,7 +83,7 @@ router.patch('/:id', async (req, res) => {
 });
 
 
-//Delete the Single News
+//Delete the Single Comment
 router.delete('/:id', async (req, res) => {
     try {
         const { id } = req.params;

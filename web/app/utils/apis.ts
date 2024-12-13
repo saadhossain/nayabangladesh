@@ -17,7 +17,7 @@ export const getNewsByCategory = async (category: string) => {
 }
 
 //Add/Publish New News
-export const addNews = async (data: {}) => {
+export const addNews = async (data: object) => {
     const res = await fetch(`${BASE_URL}/news`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -26,12 +26,30 @@ export const addNews = async (data: {}) => {
     return res.json();
 }
 
+//const getComments by News
+export const getCommentsByNewsId = async (newsId: string) => {
+    const res = await fetch(`${BASE_URL}/comment/news/${newsId}`);
+    return res.json();
+}
+
+//Add a Comment for the news
+export const addComment = async (commentData: object) => {
+    const res = await fetch(`${BASE_URL}/comment`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(commentData)
+    })
+    return res.json();
+}
+
+
 //Partially update news by id
-export const updateNewsPartially = async (id: string | undefined) => {
+export const updateNewsPartially = async (id: string | undefined, updateData: object) => {
+    console.log(id, updateData);
     const res = await fetch(`${BASE_URL}/news/${id}`, {
         method: 'PATCH',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({})
+        body: JSON.stringify(updateData)
     })
     return res.json();
 }

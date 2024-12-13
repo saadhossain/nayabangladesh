@@ -9,6 +9,7 @@ const newsRoutes = require('./routes/news.router');
 const categoryRoutes = require('./routes/category.router');
 const tagRoutes = require('./routes/tag.router');
 const userRoutes = require('./routes/user.router');
+const commentRoutes = require('./routes/comments.router');
 
 //Import the DB connection function
 const connectBD = require('./lib/connectDB');
@@ -38,6 +39,7 @@ app.use('/news', newsRoutes);
 app.use('/category', categoryRoutes);
 app.use('/tag', tagRoutes);
 app.use('/user', userRoutes);
+app.use('/comment', commentRoutes);
 
 app.get('/', (req, res) => {
     res.status(200).send('Server Running...');
