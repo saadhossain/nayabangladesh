@@ -1,4 +1,5 @@
-import { Calendar, ChartPie, NotebookPen, Power, Settings, User } from "lucide-react"
+'use client'
+import { ChartColumnStacked, ChartPie, Newspaper, NotebookPen, Power, Settings, Tags, User } from "lucide-react"
 
 import {
     Sidebar,
@@ -13,6 +14,7 @@ import {
 } from "@/components/ui/sidebar"
 import { signOut } from 'next-auth/react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 // Menu items.
 const items = [
@@ -29,7 +31,17 @@ const items = [
     {
         title: "সব খবর",
         url: "allNews",
-        icon: Calendar,
+        icon: Newspaper,
+    },
+    {
+        title: "ক্যাটেগরি",
+        url: "category",
+        icon: ChartColumnStacked,
+    },
+    {
+        title: "ট্যাগস",
+        url: "tags",
+        icon: Tags,
     },
     {
         title: "ব্যবহারকারী",
@@ -44,7 +56,7 @@ const items = [
 ]
 
 export function DashboardSidebar() {
-
+    const pathName = usePathname();
     return (
         <Sidebar className='mt-16'>
             <SidebarTrigger className='absolute top-0 -right-6 z-50' />
@@ -56,7 +68,10 @@ export function DashboardSidebar() {
                             {items.map((item) => (
                                 <SidebarMenuItem key={item.title}>
                                     <SidebarMenuButton asChild>
-                                        <Link href={`/dashboard/${item.url}`}>
+                                        <Link
+                                            href={`/dashboard/${item.url}`}
+                                            className={`font-semibold hover:text-secondary duration-200 ease-in-out ${pathName.includes(item.url) ? 'text-secondary' : 'text-primary'}`}
+                                        >
                                             <item.icon />
                                             <span>{item.title}</span>
                                         </Link>
