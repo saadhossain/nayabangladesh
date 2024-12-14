@@ -16,10 +16,10 @@ type Props = {
 const FeatureNewsMiddle = ({ top3NewsFromBangladesh, politicsNews, entertainNews }: Props) => {
     const { timeAgo } = convertTimeToBengali(top3NewsFromBangladesh[0].createdAt)
     return (
-        <div className='w-full md:w-2/4 md:border-x-2 border-gray-300 px-2 py-5'>
+        <div className='w-full md:w-2/4 md:border-x-2 border-gray-300 px-2 pt-5'>
             {/* Feature Top News */}
             <NewsDetailsLink news={top3NewsFromBangladesh[0]}>
-                <div className='md:flex justify-between gap-4 py-5 border-b border-gray-300'>
+                <div className='flex flex-col md:flex-row justify-between gap-4 py-5 border-b border-gray-300'>
                     <Image src={top3NewsFromBangladesh[0].featuredImg} alt={top3NewsFromBangladesh[0].title} width={400} height={300} className='rounded' />
                     <div>
                         <h4 className='font-semibold text-gray-800 hover:text-primary duration-300 ease-in-out'>{top3NewsFromBangladesh[0].title}</h4>

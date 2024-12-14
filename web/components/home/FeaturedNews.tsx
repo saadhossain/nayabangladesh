@@ -6,7 +6,7 @@ const FeaturedNews = ({ news }: { news: NewsType[] }) => {
     //Get the most readed news from the current category
     const newsByReadingCount = news?.sort((a: NewsType, b: NewsType) => b.readingCount - a.readingCount);
     const mostReadedThree = newsByReadingCount.slice(0, 3);
-    const topFiveHeadline = newsByReadingCount.slice(3, 8);
+    const topFiveHeadline = newsByReadingCount.slice(3, 9);
 
     //Get the Top 3 news from bangladesh category and exclude the top 3 most
     const top3NewsFromBangladesh = news
@@ -40,7 +40,7 @@ const FeaturedNews = ({ news }: { news: NewsType[] }) => {
             !mostReadedThree.includes(n) && !topFiveHeadline.includes(n)
     );
     return (
-        <div className='flex flex-col md:flex-row gap-3'>
+        <section className='flex flex-col md:flex-row gap-3'>
             <div className='w-full md:w-1/4'>
                 {/* Top three most readed news */}
                 {mostReadedThree.map((n: NewsType) => <FeatureHorizontalCard
@@ -62,7 +62,7 @@ const FeaturedNews = ({ news }: { news: NewsType[] }) => {
             />
 
             {/* Featured News Right Sidebar -- Opinion and World News */}
-            <div className='w-full md:w-1/4'>
+            <div className='w-full md:w-1/4 border-t md:border-t-0 border-gray-300'>
                 {
                     opinionAndWorldNews.map((n: NewsType) => <FeatureHorizontalCard
                         key={n._id}
@@ -71,7 +71,7 @@ const FeaturedNews = ({ news }: { news: NewsType[] }) => {
                     />)
                 }
             </div>
-        </div>
+        </section>
     )
 }
 

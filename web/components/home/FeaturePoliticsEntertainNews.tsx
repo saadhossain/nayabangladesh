@@ -11,24 +11,26 @@ const FeaturePoliticsEntertainNews = ({ politicsNews, entertainNews }: Props) =>
     const isMobile = useIsMobile();
     const sliceCount = isMobile ? 4 : 3;
     return (
-        <div>
+        <>
             {/* Politics News */}
             <div className='grid grid-cols-2 md:grid-cols-3 gap-4 py-5 border-b-2 border-gray-300'>
                 {politicsNews?.slice(0, sliceCount)?.map((news: NewsType, idx) => <HomeNewsCard
                     key={news._id}
                     news={news}
-                    noBorder={idx === politicsNews.length - 1}
+                    noBorder={idx === politicsNews.length - 3}
+                    isExcerptVisible={false}
                 />)}
             </div>
             {/* Entertainment News  and Politics News*/}
-            <div className='grid grid-cols-2 md:grid-cols-3 gap-4 py-5 border-b-2 border-gray-300'>
+            <div className='grid grid-cols-2 md:grid-cols-3 gap-4 py-5'>
                 {entertainNews?.slice(0, sliceCount)?.map((news: NewsType, idx) => <HomeNewsCard
                     key={news._id}
                     news={news}
-                    noBorder={idx === politicsNews.length - 1}
+                    noBorder={idx === politicsNews.length - 3}
+                    isExcerptVisible={false}
                 />)}
             </div>
-        </div>
+        </>
     )
 }
 
