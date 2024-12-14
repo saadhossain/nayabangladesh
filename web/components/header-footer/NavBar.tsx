@@ -2,7 +2,6 @@
 import { getCategory } from '@/app/utils/apis'
 import {
     Sheet,
-    SheetContent,
     SheetTrigger
 } from "@/components/ui/sheet"
 import { CategoryType } from '@/types/newsTypes'
@@ -53,17 +52,15 @@ const NavBar = () => {
     })
 
     return (
-        <nav className='container mx-auto h-16 bg-background/50 sticky top-0 border-b px-8 backdrop-blur flex items-center justify-between z-10'>
+        <nav className='container mx-auto h-16 bg-background/50 sticky top-0 border-b px-8 backdrop-blur flex items-center gap-5 justify-between z-10'>
             <LoadingBar
                 color='#6028ff'
                 progress={progress}
                 onLoaderFinished={() => setProgress(0)}
             />
-            <div className='text-lg font-bold md:text-xl w-52'>
-                <Link href={"/"}>
-                    <Image src={logo} alt='Naya Bangladesh' />
-                </Link>
-            </div>
+            <Link href={"/"}>
+                <Image src={logo} alt='Naya Bangladesh' className='w-56 h-auto' />
+            </Link>
             <ul className='hidden md:flex gap-2 w-full justify-end items-center text-sm font-semibold'>
 
                 {
@@ -75,29 +72,26 @@ const NavBar = () => {
                     </li>
                     )
                 }
-                <div className='ml-2'>
-                    {
-                        session ? <Link href={"/dashboard"}>
-                            <Image src={session?.user?.image} alt='Dashboard' width={32} height={32} className='h-8 w-8 rounded-full' />
-                        </Link>
-                            :
-                            <li className='buttons px-4 space-x-2'>
-                                <Link href={"/login"} className={`font-semibold ${buttonVariants({ variant: "outline" })}`}>লগিন</Link>
-                            </li>
-                    }
-                </div>
             </ul>
-            <ModeToggle />
-            {/* Mobile Navigation */}
-            <div className="flex items-center justify-center sm:hidden">
-                <Sheet>
-                    <SheetTrigger>
-                        <Menu />
-                    </SheetTrigger>
-                    <SheetContent className='overflow-x-auto'>
+            <div className='flex items-center gap-2'>
+                <ModeToggle />
+                {/* Login Button and User Image  */}
+                {
+                    session ? <Link href={"/dashboard"} className='w-8'>
+                        <Image src={session?.user?.image} alt='Dashboard' width={32} height={32} className='h-8 w-8 rounded-full' />
+                    </Link>
+                        :
+                        <Link href={"/login"} className={`font-semibold ${buttonVariants({ variant: "outline" })}`}>লগিন</Link>
+                }
+                {/* Mobile Navigation */}
+                <div className="block md:hidden">
+                    <Sheet>
+                        <SheetTrigger>
+                            <Menu />
+                        </SheetTrigger>
                         <MobileNav categories={categories} />
-                    </SheetContent>
-                </Sheet>
+                    </Sheet>
+                </div>
             </div>
         </nav>
     )
