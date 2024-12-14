@@ -9,7 +9,6 @@ import toast from 'react-hot-toast';
 
 const DashboardLayout = ({ children }: { children: ReactNode }) => {
     const { data: session } = useSession();
-    console.log(session?.user)
     //If user is not authorized return error and redirect to home page.
     useEffect(() => {
         if (session && session?.user.role !== 'editor') {

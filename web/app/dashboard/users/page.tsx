@@ -1,10 +1,17 @@
-import Heading from '@/components/headings/Heading'
+import UsersPageContent from '@/components/admin/content/UsersPageContent'
+import { SiteConfig } from '@/config/site'
+import { Metadata } from 'next'
+
+
+export const metadata: Metadata = {
+    title: 'ব্যবহারকারী - নয়া বাংলাদেশ',
+    description: SiteConfig.description
+}
+
 
 const Users = () => {
     return (
-        <div>
-            <Heading title='ব্যবহারকারী' />
-        </div>
+        <UsersPageContent />
     )
 }
 

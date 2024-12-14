@@ -6,7 +6,7 @@ const DataTable = ({ table }: any) => {
     return (
         <div>
             <div>
-                <table>
+                <table className='min-w-full'>
                     <thead className={`bg-primary text-white w-52`}>
                         {table.getHeaderGroups().map((headerGroup: any) => <tr key={headerGroup.id}
                         >

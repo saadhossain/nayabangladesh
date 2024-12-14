@@ -39,7 +39,7 @@ const items = [
         icon: ChartColumnStacked,
     },
     {
-        title: "ট্যাগস",
+        title: "ট্যাগসমূহ",
         url: "tags",
         icon: Tags,
     },
