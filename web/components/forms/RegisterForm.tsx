@@ -60,7 +60,7 @@ const RegisterForm = () => {
         const userData = {
             ...formData,
             image: profileImg,
-            role: 'author'
+            role: 'reporter'
         };
         // console.log(userData);
         try {

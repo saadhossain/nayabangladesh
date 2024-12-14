@@ -4,14 +4,19 @@ import LoadingSpinner from '@/components/spinner/LoadingSpinner';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 const DashboardLayout = ({ children }: { children: ReactNode }) => {
     const { data: session } = useSession();
-    //If user is not authorized return error and redirect to account page.
-    if (!session) {
-        redirect('/');
-    }
+    console.log(session?.user)
+    //If user is not authorized return error and redirect to home page.
+    useEffect(() => {
+        if (session && session?.user.role !== 'editor') {
+            toast.error('You are not authorized to access this page.');
+            redirect('/');
+        }
+    }, [session]);
 
     if (!session) {
 

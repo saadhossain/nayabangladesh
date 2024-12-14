@@ -137,10 +137,10 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 64px;
   height: 64px;
   margin: 8px;
-  border: 6px solid black;
+  border: 6px solid #005f34;
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: black transparent transparent transparent;
+  border-color: #005f34 transparent transparent transparent;
 }
 .lds-ring div:nth-child(1) {
   animation-delay: -0.45s;
