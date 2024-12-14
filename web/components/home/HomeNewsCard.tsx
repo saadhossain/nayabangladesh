@@ -8,7 +8,7 @@ const HomeNewsCard = ({ news, noBorder }: { news: NewsType, noBorder: boolean })
     const { timeAgo } = convertTimeToBengali(news.createdAt)
     return (
         <NewsDetailsLink news={news}>
-            <div className={`${noBorder ? '' : 'border-r pr-3'} border-gray-300 flex flex-col gap-2`}>
+            <div className={`${noBorder ? '' : 'border-r-none md:border-r pr-0 md:pr-3'} border-gray-300 flex flex-col gap-2`}>
                 <Image src={news.featuredImg} alt={news.title} width={180} height={80} className='rounded' />
                 <h4 className='font-semibold text-gray-800 hover:text-primary duration-300 ease-in-out'>{news.title}</h4>
                 {/* <p>{

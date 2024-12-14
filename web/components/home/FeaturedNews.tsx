@@ -30,18 +30,18 @@ const FeaturedNews = ({ news }: { news: NewsType[] }) => {
     const opinionAndWorldNews = [...opinionNews, ...worldNews];
 
     //Get the Entertainment News
-    const entertainmentNews = news?.filter((n: NewsType) => (n?.category?.slug === 'entertainment')).filter(
+    const entertainNews = news?.filter((n: NewsType) => (n?.category?.slug === 'entertainment')).filter(
         (n: NewsType) =>
             !mostReadedThree.includes(n) && !topFiveHeadline.includes(n)
-    ).slice(0, 3);
+    );
 
     const politicsNews = news?.filter((n: NewsType) => (n?.category?.slug === 'politics')).filter(
         (n: NewsType) =>
             !mostReadedThree.includes(n) && !topFiveHeadline.includes(n)
-    ).slice(0, 3);
+    );
     return (
-        <div className='flex gap-3'>
-            <div className='w-1/4'>
+        <div className='flex flex-col md:flex-row gap-3'>
+            <div className='w-full md:w-1/4'>
                 {/* Top three most readed news */}
                 {mostReadedThree.map((n: NewsType) => <FeatureHorizontalCard
                     key={n._id}
@@ -57,12 +57,12 @@ const FeaturedNews = ({ news }: { news: NewsType[] }) => {
             </div>
             <FeatureNewsMiddle
                 top3NewsFromBangladesh={top3NewsFromBangladesh}
-                entertainmentNews={entertainmentNews}
+                entertainNews={entertainNews}
                 politicsNews={politicsNews}
             />
 
             {/* Featured News Right Sidebar -- Opinion and World News */}
-            <div className='w-1/4'>
+            <div className='w-full md:w-1/4'>
                 {
                     opinionAndWorldNews.map((n: NewsType) => <FeatureHorizontalCard
                         key={n._id}

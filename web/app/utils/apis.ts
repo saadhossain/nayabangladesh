@@ -1,18 +1,18 @@
 import { BASE_URL } from '@/config/site';
 
 export const getNews = async () => {
-    const res = await fetch(`${BASE_URL}/news`);
+    const res = await fetch(`${BASE_URL}/news`, { next: { revalidate: 3060 } });
     return res.json();
 }
 
 export const getNewsById = async (id: string) => {
-    const res = await fetch(`${BASE_URL}/news/${id}`);
+    const res = await fetch(`${BASE_URL}/news/${id}`, { next: { revalidate: 3060 } });
     return res.json();
 }
 
 //Get News by Category
 export const getNewsByCategory = async (category: string) => {
-    const res = await fetch(`${BASE_URL}/news/category?cat=${category}`);
+    const res = await fetch(`${BASE_URL}/news/category?cat=${category}`, { next: { revalidate: 3060 } });
     return res.json();
 }
 
@@ -28,7 +28,7 @@ export const addNews = async (data: object) => {
 
 //const getComments by News
 export const getCommentsByNewsId = async (newsId: string) => {
-    const res = await fetch(`${BASE_URL}/comment/news/${newsId}`);
+    const res = await fetch(`${BASE_URL}/comment/news/${newsId}`, { next: { revalidate: 3060 } });
     return res.json();
 }
 
@@ -90,18 +90,18 @@ export const addNewTag = async (newTag: string) => {
 
 //Get Users
 export const getUsers = async () => {
-    const res = await fetch(`${BASE_URL}/user`);
+    const res = await fetch(`${BASE_URL}/user`, { next: { revalidate: 3060 } });
     return res.json();
 }
 
 export const getUserByEmail = async (email: string) => {
-    const res = await fetch(`${BASE_URL}/user/single/${email}`);
+    const res = await fetch(`${BASE_URL}/user/single/${email}`, { next: { revalidate: 3060 } });
     const data = await res.json();
     return data;
 }
 
 export const getUserByID = async (id: string | any) => {
-    const res = await fetch(`${BASE_URL}/user/${id}`);
+    const res = await fetch(`${BASE_URL}/user/${id}`, { next: { revalidate: 3060 } });
     const data = await res.json();
     return data;
 }
